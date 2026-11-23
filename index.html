@@ -8,84 +8,20 @@
     />
     <title>Kebab Tycoon</title>
     <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
-    <script type="module" crossorigin src="./assets/index-CeQIoZQZ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BmCDDmot.css">
+    <script type="module" crossorigin src="./assets/index-BViKgWgM.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-7i6IjX9x.css">
   </head>
   <body>
     <canvas id="game"></canvas>
 
-    <!-- The icon set. Every picture in the HUD is drawn here once and reused, so they all match. -->
-    <svg class="icon-sheet" width="0" height="0" aria-hidden="true" focusable="false">
-      <symbol id="i-coin" viewBox="0 0 32 32">
-        <circle cx="16" cy="17.5" r="13" fill="#2b2420" />
-        <circle cx="16" cy="15" r="13" fill="#ffc93c" stroke="#2b2420" stroke-width="2.2" />
-        <circle cx="16" cy="15" r="8.6" fill="#ffdd6b" stroke="#e9920e" stroke-width="1.8" />
-        <path
-          d="M16 9.8l1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"
-          fill="#e9920e"
-        />
-        <path
-          d="M6.6 11.4a10.4 10.4 0 0 1 5.2-5"
-          fill="none"
-          stroke="#fff"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          opacity=".9"
-        />
-      </symbol>
-      <symbol id="i-film" viewBox="0 0 48 48">
-        <rect x="5" y="21.5" width="38" height="22" rx="4" fill="#fff" stroke="#2b2420" stroke-width="3" />
-        <path d="M20 27v11l10-5.5z" fill="#2b2420" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-        <g transform="rotate(-10 6 20)">
-          <rect x="5" y="10" width="38" height="9.5" rx="2.5" fill="#2b2420" stroke="#2b2420" stroke-width="3" />
-          <path
-            d="M12 10.5l-3.5 8.5h5.5l3.5-8.5zM23 10.5l-3.5 8.5h5.5l3.5-8.5zM34 10.5l-3.5 8.5h5.5l3.5-8.5z"
-            fill="#fff"
-          />
-        </g>
-      </symbol>
-      <symbol id="i-camera" viewBox="0 0 24 24">
-        <rect x="2.5" y="7" width="13" height="11" rx="2.5" fill="#2b2420" />
-        <path d="M16.5 11.2l4.3-2.6a.6.6 0 0 1 .9.5v6.8a.6.6 0 0 1-.9.5l-4.3-2.6z" fill="#2b2420" />
-        <circle cx="9" cy="12.5" r="2.6" fill="#fffdf6" />
-      </symbol>
-      <symbol id="i-check" viewBox="0 0 24 24">
-        <path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#2b2420" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#fffdf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-      </symbol>
-      <symbol id="i-brush" viewBox="0 0 24 24">
-        <path d="M14.5 3.5l6 6-7.5 7.5-6-6z" fill="#ffc93c" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-        <path d="M7 11l6 6-2 2c-2.2 2.2-6.5 2.2-8.5 1.2 1.5-1.5 1-4.2 2.5-6.2z" fill="#e4472b" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-      </symbol>
-      <symbol id="i-style-floor" viewBox="0 0 24 24">
-        <rect x="2.5" y="2.5" width="19" height="19" rx="3" fill="#8fd3ca" stroke="#2b2420" stroke-width="2" />
-        <path d="M12 2.5v19M2.5 12h19" stroke="#2b2420" stroke-width="2" />
-      </symbol>
-      <symbol id="i-style-awning" viewBox="0 0 24 24">
-        <path d="M2 11l3-7h14l3 7c0 2-1.5 3-3.3 3s-3.2-1-3.2-3c0 2-1.5 3-3.5 3s-3.5-1-3.5-3c0 2-1.4 3-3.2 3S2 13 2 11z" fill="#e4472b" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-        <path d="M5 14v7M19 14v7" stroke="#2b2420" stroke-width="2" stroke-linecap="round" />
-      </symbol>
-      <symbol id="i-style-sign" viewBox="0 0 24 24">
-        <rect x="2" y="4" width="20" height="10" rx="2.5" fill="#ffc93c" stroke="#2b2420" stroke-width="2" />
-        <path d="M7 14v7M17 14v7" stroke="#2b2420" stroke-width="2" stroke-linecap="round" />
-        <path d="M6.5 9h11" stroke="#2b2420" stroke-width="2.5" stroke-linecap="round" />
-      </symbol>
-      <symbol id="i-style-coat" viewBox="0 0 24 24">
-        <path d="M8 3l4 3 4-3 5.5 3.5-2.5 4.5-2-1v10H7V10l-2 1L2.5 6.5z" fill="#fffdf6" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-        <circle cx="12" cy="11" r="1.1" fill="#2b2420" />
-        <circle cx="12" cy="15" r="1.1" fill="#2b2420" />
-      </symbol>
-      <symbol id="i-sound" viewBox="0 0 24 24">
-        <path d="M3 9.5h4l5-4.5v14l-5-4.5H3z" fill="#2b2420" />
-        <path d="M15.5 8.5c1.800 1.800 1.800 5.200 0 7M18 6c3.200 3.200 3.200 8.800 0 12" fill="none" stroke="#2b2420" stroke-width="2.2" stroke-linecap="round" />
-      </symbol>
-      <symbol id="i-mute" viewBox="0 0 24 24">
-        <path d="M3 9.5h4l5-4.5v14l-5-4.5H3z" fill="#2b2420" />
-        <path d="M15.5 9.5l5 5M20.5 9.5l-5 5" fill="none" stroke="#e4472b" stroke-width="2.6" stroke-linecap="round" />
-      </symbol>
+    <!--
+      The icon set. The painted pictures (coin, doner, customer...) are added here as symbols by
+      src/ui/icons.ts when the game starts; only the two plain signs are drawn by hand.
+    -->
+    <svg id="icon-sheet" class="icon-sheet" width="0" height="0" aria-hidden="true" focusable="false">
       <symbol id="i-pause" viewBox="0 0 24 24">
-        <rect x="5" y="4" width="5" height="16" rx="1.8" fill="#2b2420" />
-        <rect x="14" y="4" width="5" height="16" rx="1.8" fill="#2b2420" />
+        <rect x="4.500" y="3.500" width="6" height="17" rx="2.200" fill="#fff3d6" stroke="#3a1410" stroke-width="1.800" />
+        <rect x="13.500" y="3.500" width="6" height="17" rx="2.200" fill="#fff3d6" stroke="#3a1410" stroke-width="1.800" />
       </symbol>
       <symbol id="i-play" viewBox="0 0 24 24">
         <path
@@ -96,108 +32,13 @@
           stroke-linejoin="round"
         />
       </symbol>
-      <symbol id="i-serve" viewBox="0 0 32 32">
-        <path
-          d="M4.5 29.5v-3.5a11.5 9.5 0 0 1 23 0v3.5z"
-          fill="#4f8fe6"
-          stroke="#2b2420"
-          stroke-width="2.2"
-          stroke-linejoin="round"
-        />
-        <circle cx="16" cy="11.5" r="7.5" fill="#f2c29b" stroke="#2b2420" stroke-width="2.2" />
-        <path d="M8.7 10.2a7.5 7.5 0 0 1 14.6 0c-2.5-1.6-5-2.3-7.3-2.3s-4.8.7-7.3 2.3z" fill="#5a3a22" />
-        <circle cx="13.2" cy="12.6" r="1.1" fill="#2b2420" />
-        <circle cx="18.8" cy="12.6" r="1.1" fill="#2b2420" />
-        <path d="M13 15.2q3 2.4 6 0" fill="none" stroke="#2b2420" stroke-width="1.5" stroke-linecap="round" />
-      </symbol>
-      <symbol id="i-gift" viewBox="0 0 32 32">
-        <rect x="5" y="14" width="22" height="14.5" rx="2.5" fill="#e4472b" stroke="#2b2420" stroke-width="2.2" />
-        <rect x="3.5" y="9.5" width="25" height="6" rx="2" fill="#ff6a4d" stroke="#2b2420" stroke-width="2.2" />
-        <rect x="14" y="10.6" width="4" height="16.8" fill="#ffc93c" />
-        <path
-          d="M16 9.5c-2-5-8-5.5-7.5-2s5 2.5 7.5 2zm0 0c2-5 8-5.5 7.5-2s-5 2.5-7.5 2z"
-          fill="#ffc93c"
-          stroke="#2b2420"
-          stroke-width="2"
-          stroke-linejoin="round"
-        />
-      </symbol>
-      <symbol id="i-shop" viewBox="0 0 32 32">
-        <rect x="6" y="13" width="20" height="15.5" rx="2" fill="#fff7e6" stroke="#2b2420" stroke-width="2.2" />
-        <rect x="13" y="19.5" width="6" height="9" rx="1" fill="#c9803e" stroke="#2b2420" stroke-width="1.8" />
-        <path
-          d="M3.5 14.5l3-9h19l3 9a3.1 3.1 0 0 1-6.2 0 3.1 3.1 0 0 1-6.3 0 3.1 3.1 0 0 1-6.3 0 3.1 3.1 0 0 1-6.2 0z"
-          fill="#e4472b"
-          stroke="#2b2420"
-          stroke-width="2.2"
-          stroke-linejoin="round"
-        />
-        <path d="M13.2 6.8h5.6l.9 7.6h-7.4z" fill="#fff" />
-      </symbol>
-      <symbol id="i-clock" viewBox="0 0 24 24">
-        <rect x="10" y="1" width="4" height="4" rx="1" fill="#2b2420" />
-        <circle cx="12" cy="13.5" r="8" fill="#fff" stroke="#2b2420" stroke-width="2.2" />
-        <path
-          d="M12 9v4.5l3 2"
-          fill="none"
-          stroke="#2b2420"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </symbol>
-      <symbol id="i-spark" viewBox="0 0 24 24">
-        <path
-          d="M12 1.5c1 6 3.5 8.5 10.5 10.5-7 2-9.5 4.5-10.5 10.5-1-6-3.5-8.5-10.5-10.5 7-2 9.5-4.5 10.5-10.5z"
-          fill="#fff3b0"
-          stroke="#e9920e"
-          stroke-width="1.4"
-          stroke-linejoin="round"
-        />
-      </symbol>
-      <symbol id="i-upgrade" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" fill="#ffc93c" stroke="#2b2420" stroke-width="2" />
-        <path d="M12 5.5l5.5 6h-3.3V18H9.8v-6.5H6.5z" fill="#fffdf6" stroke="#2b2420" stroke-width="1.8" stroke-linejoin="round" />
-      </symbol>
-      <symbol id="i-lock" viewBox="0 0 24 24">
-        <path d="M7.5 11V8a4.5 4.5 0 0 1 9 0v3" fill="none" stroke="#2b2420" stroke-width="2.4" stroke-linecap="round" />
-        <rect x="4.5" y="10.5" width="15" height="11" rx="2.5" fill="#ffc93c" stroke="#2b2420" stroke-width="2" />
-        <circle cx="12" cy="15.5" r="1.8" fill="#2b2420" />
-      </symbol>
-      <symbol id="i-doner" viewBox="0 0 24 24">
-        <path d="M12 1.5v21" stroke="#2b2420" stroke-width="2" stroke-linecap="round" />
-        <path d="M7 5.5h10l-2.2 13H9.2z" fill="#b5642e" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-        <path d="M8.2 9.5h7.6M8.9 13.5h6.2" stroke="#7a3d18" stroke-width="1.6" stroke-linecap="round" />
-        <circle cx="12" cy="4" r="2.2" fill="#e4472b" stroke="#2b2420" stroke-width="1.6" />
-        <path d="M6 21.5h12" stroke="#2b2420" stroke-width="2.4" stroke-linecap="round" />
-      </symbol>
-      <symbol id="i-wrap" viewBox="0 0 24 24">
-        <g transform="rotate(35 12 12)">
-          <rect x="8" y="2.5" width="8" height="19" rx="3.5" fill="#f3d9a4" stroke="#2b2420" stroke-width="2" />
-          <path d="M8 12.5h8V18a3.5 3.5 0 0 1-3.5 3.5h-1A3.5 3.5 0 0 1 8 18z" fill="#fffdf6" stroke="#2b2420" stroke-width="2" stroke-linejoin="round" />
-          <path d="M10 4.2h4" stroke="#b5642e" stroke-width="2.2" stroke-linecap="round" />
-        </g>
-      </symbol>
-      <symbol id="i-crate" viewBox="0 0 24 24">
-        <path d="M7 8c0-3.2 2-5 5-5s5 1.8 5 5" fill="#f3d9a4" stroke="#2b2420" stroke-width="2" />
-        <rect x="3" y="8" width="18" height="12.5" rx="2" fill="#d9a05b" stroke="#2b2420" stroke-width="2" />
-        <path d="M3.5 12.5h17M9 8.5v12M15 8.5v12" stroke="#2b2420" stroke-width="1.6" />
-      </symbol>
-      <symbol id="i-scooter" viewBox="0 0 24 24">
-        <path d="M6 17.5h8l3-9.5h2.5" fill="none" stroke="#2b2420" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-        <rect x="2.5" y="7.5" width="8.5" height="6.5" rx="1.5" fill="#e4472b" stroke="#2b2420" stroke-width="2" />
-        <circle cx="6" cy="17.5" r="3.2" fill="#fffdf6" stroke="#2b2420" stroke-width="2" />
-        <circle cx="18.5" cy="17.5" r="3.2" fill="#fffdf6" stroke="#2b2420" stroke-width="2" />
-      </symbol>
-      <symbol id="i-plate" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9.5" fill="#fffdf6" stroke="#2b2420" stroke-width="2" />
-        <circle cx="12" cy="12" r="5.5" fill="#f3d9a4" stroke="#2b2420" stroke-width="1.6" />
-        <path d="M9.5 11h5M10 13.5h4" stroke="#b5642e" stroke-width="1.6" stroke-linecap="round" />
-      </symbol>
     </svg>
 
-    <!-- Everything drawn over the running game. It is switched off as one while a dialog is open. -->
-    <div id="hud-layer">
+    <!--
+      Everything drawn over the running game. It is switched off as one while a dialog is open,
+      and stays out of sight until the game has its pictures (see main.ts).
+    -->
+    <div id="hud-layer" hidden>
       <div id="hud">
         <div id="wallet" class="chip">
           <svg class="coin" aria-hidden="true"><use href="#i-coin" /></svg>
@@ -239,9 +80,7 @@
         </span>
       </div>
       <div id="rush" class="chip" role="img" aria-label="Rush hour" hidden>
-        <svg aria-hidden="true"><use href="#i-serve" /></svg>
-        <svg aria-hidden="true"><use href="#i-serve" /></svg>
-        <svg aria-hidden="true"><use href="#i-serve" /></svg>
+        <svg aria-hidden="true"><use href="#i-rush" /></svg>
       </div>
       <div id="side">
         <div id="boost" class="chip" hidden>
@@ -277,11 +116,14 @@
         <div class="edge-marker" hidden><i class="edge-pointer"></i><svg><use href="#i-serve" /></svg></div>
         <div class="edge-marker" hidden><i class="edge-pointer"></i><svg><use href="#i-serve" /></svg></div>
       </div>
-      <div id="drag-hint" hidden><div id="drag-hand"></div></div>
+      <div id="drag-hint" hidden>
+        <div id="drag-hand"><svg aria-hidden="true"><use href="#i-hand" /></svg></div>
+      </div>
     </div>
 
     <div id="pause" class="overlay" role="dialog" aria-modal="true" aria-label="Game paused" hidden>
       <div class="card enter">
+        <svg class="card-mascot" aria-hidden="true"><use href="#i-chef" /></svg>
         <span class="pause-mark" role="img" aria-label="Paused">
           <svg aria-hidden="true"><use href="#i-pause" /></svg>
         </span>
