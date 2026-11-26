@@ -8,20 +8,28 @@
     />
     <title>Kebab Tycoon</title>
     <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
-    <script type="module" crossorigin src="./assets/index-BViKgWgM.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-7i6IjX9x.css">
+    <script type="module" crossorigin src="./assets/index-C8BCmCiy.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CwVa5nZF.css">
   </head>
   <body>
     <canvas id="game"></canvas>
 
     <!--
       The icon set. The painted pictures (coin, doner, customer...) are added here as symbols by
-      src/ui/icons.ts when the game starts; only the two plain signs are drawn by hand.
+      src/ui/icons.ts when the game starts; only the plain signs and the review star are drawn by hand.
     -->
     <svg id="icon-sheet" class="icon-sheet" width="0" height="0" aria-hidden="true" focusable="false">
       <symbol id="i-pause" viewBox="0 0 24 24">
         <rect x="4.500" y="3.500" width="6" height="17" rx="2.200" fill="#fff3d6" stroke="#3a1410" stroke-width="1.800" />
         <rect x="13.500" y="3.500" width="6" height="17" rx="2.200" fill="#fff3d6" stroke="#3a1410" stroke-width="1.800" />
+      </symbol>
+      <linearGradient id="star-gold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0.1" stop-color="#fff3b8" />
+        <stop offset="0.75" stop-color="#ffc93c" />
+      </linearGradient>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="M12.00 2.20 L14.88 8.84 L22.08 9.52 L16.66 14.31 L18.23 21.38 L12.00 17.70 L5.77 21.38 L7.34 14.31 L1.92 9.52 L9.12 8.84Z" fill="url(#star-gold)" stroke="#3a1410" stroke-width="1.700" stroke-linejoin="round" />
+        <ellipse cx="10.900" cy="8.400" rx="0.900" ry="1.800" transform="rotate(-23 10.900 8.400)" fill="#fff" opacity="0.85" />
       </symbol>
       <symbol id="i-play" viewBox="0 0 24 24">
         <path
@@ -44,10 +52,15 @@
           <svg class="coin" aria-hidden="true"><use href="#i-coin" /></svg>
           <span id="wallet-value">0</span>
         </div>
-        <div id="branch" class="chip" hidden>
+        <!-- Which shop this is; from the second shop on it is also the way to the others. -->
+        <button id="branch" class="chip" type="button" aria-label="" hidden>
           <svg aria-hidden="true"><use href="#i-shop" /></svg>
           <span id="branch-number"></span>
-        </div>
+          <span id="branch-earning" aria-hidden="true">
+            <svg><use href="#i-coin" /></svg>
+            <span id="branch-earning-value"></span>
+          </span>
+        </button>
       </div>
       <div id="mission" class="chip" data-kind="serve" role="img" aria-label="">
         <span class="mission-badge">
@@ -83,6 +96,16 @@
         <svg aria-hidden="true"><use href="#i-rush" /></svg>
       </div>
       <div id="side">
+        <!-- What customers say about this shop: its stars, from their latest reviews. -->
+        <div id="rating" class="chip" role="img" aria-label="">
+          <svg aria-hidden="true"><use href="#i-star" /></svg>
+          <span id="rating-value"></span>
+        </div>
+        <!-- What is on in the neighbourhood today, and a rival across the street. -->
+        <div id="hood-chip" class="chip" role="img" aria-label="" hidden>
+          <svg id="hood-today" aria-hidden="true"><use id="hood-today-icon" href="#i-match" /></svg>
+          <svg id="hood-rival" aria-hidden="true"><use href="#i-rival" /></svg>
+        </div>
         <div id="boost" class="chip" hidden>
           <b>2×</b>
           <svg aria-hidden="true"><use href="#i-clock" /></svg>
@@ -116,6 +139,40 @@
         <div class="edge-marker" hidden><i class="edge-pointer"></i><svg><use href="#i-serve" /></svg></div>
         <div class="edge-marker" hidden><i class="edge-pointer"></i><svg><use href="#i-serve" /></svg></div>
       </div>
+      <!-- The books of the day that just ended; it goes by itself. -->
+      <div id="day-report" role="status" hidden>
+        <span id="day-said" class="day-said"></span>
+        <span class="day-best" aria-hidden="true">
+          <svg><use href="#i-spark" /></svg>
+          <svg><use href="#i-spark" /></svg>
+        </span>
+        <div class="day-head" aria-hidden="true">
+          <svg><use href="#i-clock" /></svg>
+          <span id="day-number"></span>
+        </div>
+        <ul id="day-lines" aria-hidden="true"></ul>
+        <div class="day-total" aria-hidden="true">
+          <svg><use href="#i-coin" /></svg>
+          <span id="day-profit"></span>
+          <i id="day-trend"></i>
+        </div>
+      </div>
+      <!-- News from the neighbourhood: the day's event, the critic's verdict, the rival gone. It goes by itself. -->
+      <div id="hood-banner" role="status" hidden>
+        <svg class="hood-picture" aria-hidden="true"><use id="hood-icon" href="#i-match" /></svg>
+        <div class="hood-words">
+          <b id="hood-title"></b>
+          <span id="hood-line"></span>
+        </div>
+      </div>
+      <!-- Up while the cook stands on an upgrade's pad: the upgrade, its price, and the only way to pay. -->
+      <button id="buy" type="button" aria-label="" hidden>
+        <svg aria-hidden="true"><use id="buy-icon" href="#i-upgrade" /></svg>
+        <span class="buy-cost">
+          <svg aria-hidden="true"><use href="#i-coin" /></svg>
+          <span id="buy-price"></span>
+        </span>
+      </button>
       <div id="drag-hint" hidden>
         <div id="drag-hand"><svg aria-hidden="true"><use href="#i-hand" /></svg></div>
       </div>
@@ -158,7 +215,15 @@
         </button>
       </div>
     </div>
-    <!-- The curtain drawn across the screen while the shop moves to a new district. -->
+    <div id="travel" class="overlay" role="dialog" aria-modal="true" aria-label="Your shops" hidden>
+      <div class="card enter">
+        <div id="travel-list"></div>
+        <button id="travel-close" class="go-button" type="button" aria-label="Back to the game">
+          <svg aria-hidden="true"><use href="#i-play" /></svg>
+        </button>
+      </div>
+    </div>
+    <!-- The curtain drawn across the screen while the player goes to another district. -->
     <div id="wipe" aria-hidden="true" hidden>
       <svg aria-hidden="true"><use href="#i-shop" /></svg>
     </div>
